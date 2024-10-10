@@ -29,7 +29,7 @@ def fetch_all_nodes():
 def fetch_nodes_by_label(label):
     query = f"MATCH (n:{label}) RETURN n"
     with driver.session() as session:
-        results = session.run(query)
+        results = session./run(query)
         nodes = []
         for record in results:
             nodes.append(record["n"])  # Extract node details
