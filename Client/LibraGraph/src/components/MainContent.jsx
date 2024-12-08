@@ -1,21 +1,35 @@
 import React from 'react';
-import LibrarySection from './LibrarySection';
-import ProfileButton from './ProfileButton';
 
 const MainContent = () => {
   return (
-    <main className="flex flex-wrap gap-5 justify-between self-end mt-24 w-full max-w-[1918px] max-md:mt-10 max-md:max-w-full">
-      <section className="flex flex-col items-center self-start mt-9 max-md:max-w-full">
-        <h1 className="ml-4 text-6xl font-extrabold text-center text-slate-100 max-md:max-w-full max-md:text-4xl">
-          Meet our AI librarian for instant help...
+    <main className="flex flex-col items-center px-6 py-10 bg-gray-800 text-gray-100">
+      {/* Hero Section */}
+      <section className="text-center max-w-3xl">
+        <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+          Meet Our AI Librarian for Instant Help!
         </h1>
-        <div className="self-stretch mt-24 max-md:mt-10 max-md:max-w-full">
-          <div className="flex gap-5 max-md:flex-col">
-            <LibrarySection title="Borrowed Books" />
-            <LibrarySection title="Issue Books" />
-          </div>
+        <p className="text-lg text-gray-300 mb-10">
+          Search for books, get personalized recommendations, and manage your library seamlessly.
+        </p>
+        <button className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-md transition">
+          Get Started
+        </button>
+      </section>
+
+      {/* Features Section */}
+      <section className="flex flex-wrap gap-8 justify-center mt-16 max-w-4xl">
+        <div className="p-6 bg-gray-700 rounded-lg shadow-lg text-center w-60">
+          <h3 className="text-xl font-semibold mb-3">Search Books</h3>
+          <p className="text-gray-300">Quickly search and find your favorite books using our smart search.</p>
         </div>
-        <ProfileButton />
+        <div className="p-6 bg-gray-700 rounded-lg shadow-lg text-center w-60">
+          <h3 className="text-xl font-semibold mb-3">Recommendations</h3>
+          <p className="text-gray-300">Get AI-driven personalized book recommendations.</p>
+        </div>
+        <div className="p-6 bg-gray-700 rounded-lg shadow-lg text-center w-60">
+          <h3 className="text-xl font-semibold mb-3">Manage Library</h3>
+          <p className="text-gray-300">Easily keep track of your library and borrowing history.</p>
+        </div>
       </section>
     </main>
   );
