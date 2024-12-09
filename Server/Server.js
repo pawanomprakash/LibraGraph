@@ -1,13 +1,14 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const connectToDB = require("./Config/connection.js");
 const bookRoutes = require('./Routes/routes');
 const bodyParser = require("body-parser");
-const cors = require("cors");
 
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+app.use(cors());
 app.use(express.json());
 
 app.use('/api', bookRoutes);
