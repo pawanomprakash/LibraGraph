@@ -1,21 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import SearchBar from './SearchBar'; // Import the SearchBar component
 
 const Catalog = () => {
-  const [books, setBooks] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const booksPerPage = 8;
-  const [filteredBooks, setFilteredBooks] = useState([]);
+  const [books, setBooks] = useState([]); // All books in the catalog
+  const [filteredBooks, setFilteredBooks] = useState([]); // Books currently displayed after search/filter
+  const [loading, setLoading] = useState(false); // To track if more books are being fetched
+  const [page, setPage] = useState(1); // To track the current page for loading books
+  
+  const booksPerPage = 8; // Number of books to load at once
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/books')
+    fetchBooks(page);
+  }, [page]);
+
+  // Function to fetch books from the API
+  const fetchBooks = (page) => {
+    setLoading(true);
+    fetch(`http://localhost:3000/api/books?page=${page}&limit=${booksPerPage}`)
       .then(response => response.json())
       .then(data => {
-        setBooks(data);
-        setFilteredBooks(data); // Initially set all books
+        setBooks((prevBooks) => [...prevBooks, ...data]); // Append new books to the existing list
+        setFilteredBooks((prevBooks) => [...prevBooks, ...data]); // Same for filtered list
+        setLoading(false);
       })
-      .catch(err => console.error('Error fetching books:', err));
-  }, []);
+      .catch(err => {
+        console.error('Error fetching books:', err);
+        setLoading(false);
+      });
+  };
 
   // Handle search input
   const handleSearch = (query) => {
@@ -30,48 +42,55 @@ const Catalog = () => {
     }
   };
 
-  // Pagination logic
-  const indexOfLastBook = currentPage * booksPerPage;
-  const indexOfFirstBook = indexOfLastBook - booksPerPage;
-  const currentBooks = filteredBooks.slice(indexOfFirstBook, indexOfLastBook);
+  // Detect when the user has scrolled to the bottom of the page
+  const handleScroll = useCallback(() => {
+    const bottom = document.documentElement.scrollHeight === document.documentElement.scrollTop + window.innerHeight;
+    if (bottom && !loading) {
+      setPage((prevPage) => prevPage + 1); // Load more books when reaching the bottom
+    }
+  }, [loading]);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  const totalPages = Math.ceil(filteredBooks.length / booksPerPage);
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [handleScroll]);
 
   return (
-    <div className="p-4 bg-gradient-to-r from-purple-700 via-blue-600 to-teal-500 min-h-screen">
-      <h1 className="text-4xl font-bold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">
-        Book Catalog
-      </h1>
-      
+    <div className="p-4 bg-black min-h-screen relative">
       {/* Search Bar */}
-      <div className="mb-8 flex justify-center">
+      <div className="absolute top-4 right-4 flex space-x-4">
         <SearchBar onSearch={handleSearch} />
       </div>
 
+      <h1 className="text-4xl font-bold text-center mb-8 text-gray-100">
+        Book Catalog
+      </h1>
+
       {/* Show message if no books are found */}
       {filteredBooks.length === 0 ? (
-        <div className="text-center text-xl text-white">
+        <div className="text-center text-xl text-gray-400">
           No books found matching your search.
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {currentBooks.map((book, index) => (
+          {filteredBooks.map((book, index) => (
             <div
               key={index}
-              className="group bg-gradient-to-r from-gray-600 via-gray-500 to-gray-600 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 relative overflow-hidden"
+              className="group bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 relative overflow-hidden"
             >
               <img 
                 src={book.image_link} 
                 alt={book.name} 
-                className="w-full h-48 object-contain mb-4 rounded-lg" 
+                className="w-full h-48 object-contain mb-4 rounded-lg shadow-md"
               />
-              <h2 className="text-xl font-semibold mb-2 text-white">{book.name}</h2>
-              <p className="text-gray-300"><strong>Author:</strong> {book.author}</p>
-              <p className="text-gray-300"><strong>ISBN:</strong> {book.ISBN}</p>
+              <h2 className="text-xl font-semibold mb-2 text-gray-100">{book.name}</h2>
+              <p className="text-gray-400"><strong>Author:</strong> {book.author}</p>
+              <p className="text-gray-400"><strong>ISBN:</strong> {book.ISBN}</p>
               <button 
                 onClick={() => window.open(book.amazon_link, '_blank')}
-                className="mt-4 px-6 py-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold rounded-lg hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-500 focus:outline-none focus:ring-2 focus:ring-purple-300"
+                className="mt-4 px-6 py-2 bg-gray-700 text-white font-bold rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
               >
                 Buy on Amazon
               </button>
@@ -80,32 +99,12 @@ const Catalog = () => {
         </div>
       )}
 
-      {/* Pagination Buttons */}
-      <div className="flex justify-center mt-8">
-        <button
-          onClick={() => paginate(currentPage - 1)}
-          disabled={currentPage === 1}
-          className="px-4 py-2 mx-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 disabled:bg-gray-500"
-        >
-          Previous
-        </button>
-        {[...Array(totalPages)].map((_, index) => (
-          <button
-            key={index}
-            onClick={() => paginate(index + 1)}
-            className={`px-4 py-2 mx-2 ${currentPage === index + 1 ? 'bg-purple-600' : 'bg-gray-600'} text-white rounded-lg hover:bg-purple-700`}
-          >
-            {index + 1}
-          </button>
-        ))}
-        <button
-          onClick={() => paginate(currentPage + 1)}
-          disabled={currentPage === totalPages}
-          className="px-4 py-2 mx-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 disabled:bg-gray-500"
-        >
-          Next
-        </button>
-      </div>
+      {/* Loading Indicator */}
+      {loading && (
+        <div className="flex justify-center mt-8 text-gray-400">
+          <span>Loading more books...</span>
+        </div>
+      )}
     </div>
   );
 };
