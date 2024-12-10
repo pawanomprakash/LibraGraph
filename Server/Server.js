@@ -4,7 +4,7 @@ const cors = require("cors");
 const connectToDB = require("./Config/connection.js");
 const bookRoutes = require('./Routes/routes');
 const bodyParser = require("body-parser");
-
+const authRoutes = require('./Routes/auth');
 
 
 const app = express();
@@ -14,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api', bookRoutes);
+app.use('/api/auth', authRoutes);
 
 connectToDB().then(() => {
   app.listen(PORT, () => {
