@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React  from 'react';
 import Catalog from './Catalog';
 import BorrowBook from './BorrowBook';
 import LibraryDashboard from './LibraryDashboard';
@@ -9,11 +10,12 @@ import DigitalContent from './DigitalContent';
  import VoiceCommands from './VoiceCommands';
 
 const MainContent = () => {
+  
   return (
     <main className="py-12 px-6 bg-gray-900 text-gray-100 min-h-screen">
       <div className="container mx-auto space-y-12">
         <section className="bg-gradient-to-r from-purple-600 to-indigo-500 p-8 rounded-lg shadow-lg">
-          <Catalog />
+        <Catalog  />
         </section>
         <section className="bg-gradient-to-r from-blue-600 to-cyan-500 p-8 rounded-lg shadow-lg">
           <BorrowBook />
