@@ -1,6 +1,7 @@
 // src/components/Header.jsx
 
 import React from 'react';
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 
 const Header = () => {
   return (
@@ -31,12 +32,30 @@ const Header = () => {
             />
           </form>
 
-          {/* Profile Picture */}
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/de60c8eef20a7dc398eecdf2a91aa4b245a026c922d047fe5f0d7bd5f5fa2d4c"
-            alt="User Profile"
-            className="w-14 h-14 rounded-full border-2 border-gray-700 hover:border-blue-400 hover:scale-105 transition-all duration-300 transform"
-          />
+        {/* Auth and Profile Section */}
+        <div className="flex gap-6 items-center">
+          {/* Signed Out */}
+          <SignedOut>
+            <SignInButton>
+              <button className="px-4 py-2 bg-purple-800 text-white rounded-lg hover:bg-blue-400 transition-all duration-300 m-6">
+                Sign In
+              </button>
+            </SignInButton>
+          </SignedOut>
+
+          {/* Signed In */}
+          <SignedIn>
+            <UserButton     appearance={{
+                elements: {
+                  avatarBox: "w-14 h-14 rounded-full border-2 border-gray-700 hover:border-blue-400 hover:scale-105 transition-all duration-300 transform",
+                  userButtonOuter: "p-2 bg-gray-800 rounded-lg hover:shadow-lg",
+                  dropdownMenu: "bg-gray-900 text-gray-100 rounded-lg shadow-lg",
+                  dropdownItem: "px-4 py-2 hover:bg-gray-700 rounded-md transition-all duration-300",
+                },
+              }}/>
+          </SignedIn>
+        </div>
+
         </div>
       </div>
     </header>
