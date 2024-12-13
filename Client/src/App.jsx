@@ -1,8 +1,13 @@
 import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, NavLink } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import Books from './pages/Books'; // Import the Books page
 import DigitalBooksPage from './pages/DigitalBooksPage'; // Import the new DigitalBooksPage component
+import VoiceBot from './pages/VoiceBot'; // Import the VoiceBot page
+
+const NotFound = () => {
+  return <div className="text-center p-8">404 - Page Not Found</div>;
+};
 
 function App() {
   return (
@@ -11,13 +16,36 @@ function App() {
       <nav>
         <ul className="flex gap-4 p-4 bg-gray-800 text-white">
           <li>
-            <Link to="/" className="hover:text-blue-400">Home</Link>
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? 'text-blue-400' : 'hover:text-blue-400')}
+            >
+              Home
+            </NavLink>
           </li>
           <li>
-            <Link to="/books" className="hover:text-blue-400">Books</Link> {/* Link to Books page */}
+            <NavLink
+              to="/books"
+              className={({ isActive }) => (isActive ? 'text-blue-400' : 'hover:text-blue-400')}
+            >
+              Books
+            </NavLink>
           </li>
           <li>
-            <Link to="/digital-books" className="hover:text-blue-400">Digital Books</Link> {/* Link to Digital Books page */}
+            <NavLink
+              to="/digital-books"
+              className={({ isActive }) => (isActive ? 'text-blue-400' : 'hover:text-blue-400')}
+            >
+              Digital Books
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/voice-bot"
+              className={({ isActive }) => (isActive ? 'text-blue-400' : 'hover:text-blue-400')}
+            >
+              Voice Bot
+            </NavLink>
           </li>
         </ul>
       </nav>
@@ -25,8 +53,10 @@ function App() {
       {/* Define routes for the application */}
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/books" element={<Books />} /> {/* Add Books page route */}
-        <Route path="/digital-books" element={<DigitalBooksPage />} /> {/* Add Digital Books page route */}
+        <Route path="/books" element={<Books />} />
+        <Route path="/digital-books" element={<DigitalBooksPage />} />
+        <Route path="/voice-bot" element={<VoiceBot />} /> {/* Add VoiceBot route */}
+        <Route path="*" element={<NotFound />} /> {/* Catch-all route */}
       </Routes>
     </>
   );

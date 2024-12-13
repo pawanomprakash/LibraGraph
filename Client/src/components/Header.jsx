@@ -34,6 +34,12 @@ const Header = () => {
           >
             Digital Books
           </Link>
+          <Link
+            to="/voice-bot" // Link to the VoiceBot page (Alexa section)
+            className="hover:text-blue-400 transition-all duration-300 transform hover:scale-105"
+          >
+            Alexa
+          </Link>
           <a
             href="#contact"
             className="hover:text-blue-400 transition-all duration-300 transform hover:scale-105"
