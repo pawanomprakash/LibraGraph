@@ -1,21 +1,60 @@
 import React, { useState } from "react";
+import { ChatGroq } from "@langchain/groq";
+import { ChatPromptTemplate } from "@langchain/core/prompts";
+import { StringOutputParser } from "@langchain/core/output_parsers";
+import { RunnableSequence } from "@langchain/core/runnables";
+import { FaComments } from "react-icons/fa"; // Importing the chat bubble icon
+
+const initializeChat = () => {
+  try {
+    const groqApiKey = import.meta.env.VITE_GROQ_API_KEY;
+
+    if (!groqApiKey) {
+      throw new Error("GROQ API key not found in environment variables");
+    }
+
+    const model = new ChatGroq({
+      apiKey: groqApiKey,
+      model: "mixtral-8x7b-32768",
+      temperature: 0,
+    });
+
+    const prompt = ChatPromptTemplate.fromMessages([
+      ["system", "You are a friendly and helpful library assistant..."],
+      ["human", "{input}"]
+    ]);
+
+    return RunnableSequence.from([prompt, model, new StringOutputParser()]);
+  } catch (error) {
+    console.error("Error initializing chat:", error);
+    return null;
+  }
+};
+
+const chain = initializeChat();
 
 function Chatbot() {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  const [isOpen, setIsOpen] = useState(false); // Manage chatbot visibility
+  const [isChatVisible, setIsChatVisible] = useState(false); // State to control visibility of the chat
 
   const handleInputChange = (e) => {
     setInput(e.target.value);
-    setError("");
+    setError(""); // Clear any previous errors
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setError("");
+
+    if (!chain) {
+      setError("Chat system not properly initialized. Please check API key configuration.");
+      setIsLoading(false);
+      return;
+    }
 
     const userMessage = input.trim();
     if (!userMessage) {
@@ -27,25 +66,33 @@ function Chatbot() {
     setMessages((prev) => [...prev, { role: "user", content: userMessage }]);
     setInput("");
 
-    // Simulate chatbot response
-    setTimeout(() => {
-      setMessages((prev) => [...prev, { role: "assistant", content: "This is a simulated response." }]);
-      setIsLoading(false);
-    }, 1000);
+    try {
+      const result = await chain.invoke({ input: userMessage });
+      setMessages((prev) => [...prev, { role: "assistant", content: result }]);
+    } catch (error) {
+      console.error("Error:", error);
+      setError("Sorry, something went wrong. Please try again.");
+    }
+    setIsLoading(false);
+  };
+
+  const toggleChatVisibility = () => {
+    setIsChatVisible((prev) => !prev); // Toggle the visibility of the chat
   };
 
   return (
     <>
-      {/* Floating Icon */}
-      <div
-        style={styles.chatIcon}
-        onClick={() => setIsOpen(!isOpen)}
+      {/* Chat Icon Button */}
+      <button
+        style={styles.chatIconButton}
+        onClick={toggleChatVisibility}
+        aria-label="Open Chat"
       >
-        💬
-      </div>
+        <FaComments style={styles.chatIcon} />
+      </button>
 
-      {/* Chatbot Window */}
-      {isOpen && (
+      {/* Chat Window */}
+      {isChatVisible && (
         <div style={styles.chatContainer}>
           <div style={styles.chatBox}>
             <div style={styles.messagesContainer}>
@@ -69,7 +116,7 @@ function Chatbot() {
                 value={input}
                 onChange={handleInputChange}
                 style={styles.input}
-                placeholder="Ask me something..."
+                placeholder="Ask me about the library..."
               />
               <button type="submit" style={styles.button} disabled={isLoading}>
                 Send
@@ -83,42 +130,39 @@ function Chatbot() {
 }
 
 const styles = {
-  chatIcon: {
+  chatIconButton: {
     position: "fixed",
     bottom: "20px",
     right: "20px",
-    width: "60px",
-    height: "60px",
     backgroundColor: "#007BFF",
-    color: "#fff",
+    border: "none",
     borderRadius: "50%",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
+    padding: "15px",
+    boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
     cursor: "pointer",
-    fontSize: "30px",
     zIndex: 1000,
+  },
+  chatIcon: {
+    color: "#fff",
+    fontSize: "24px",
   },
   chatContainer: {
     position: "fixed",
-    bottom: "90px",
+    bottom: "80px", // Adjusted to prevent overlap with icon
     right: "20px",
     width: "300px",
-    backgroundColor: "#fff",
-    borderRadius: "10px",
-    boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
     zIndex: 1000,
   },
   chatBox: {
+    backgroundColor: "#fff",
+    borderRadius: "10px",
+    boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+    padding: "20px",
     display: "flex",
     flexDirection: "column",
-    padding: "20px",
-    maxHeight: "400px",
-    overflow: "hidden",
   },
   messagesContainer: {
-    flexGrow: 1,
+    maxHeight: "300px",
     overflowY: "auto",
     marginBottom: "10px",
     display: "flex",
