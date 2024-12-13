@@ -1,25 +1,27 @@
 import React from 'react';
 import Catalog from './Catalog';
-import BorrowBook from './BorrowBook';
-import LibraryDashboard from './LibraryDashboard';
 import DigitalContent from './DigitalContent';
 import NaturalLanguageSearch from './NaturalLanguageSearch';
 import Chatbot from './SmartChatbot';
 import VoiceCommands from './VoiceCommands';
+import CategoryList from './CategoryList';
+import Recommendations from './Recommendations';
 
 const MainContent = () => {
   return (
     <main className="py-12 px-6 bg-black text-gray-100 min-h-screen">
       <div className="container mx-auto space-y-12 w-full">
+        {/* Categories Section */}
+        <CategoryList />
+
+        {/* Recommendations Section */}
+        <Recommendations />
+
+        {/* Other Sections */}
         <section className="bg-gray-800 p-8 rounded-lg shadow-md">
           <Catalog />
         </section>
-        <section className="bg-gray-800 p-8 rounded-lg shadow-md">
-          <BorrowBook />
-        </section>
-        <section className="bg-gray-800 p-8 rounded-lg shadow-md">
-          <LibraryDashboard />
-        </section>
+        
         <section className="bg-gray-800 p-8 rounded-lg shadow-md">
           <DigitalContent />
         </section>
