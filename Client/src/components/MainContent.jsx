@@ -2,7 +2,6 @@ import React from 'react';
 import Catalog from './Catalog';
 import DigitalContent from './DigitalContent';
 import Chatbot from './SmartChatbot';
-import VoiceCommands from './VoiceCommands';
 import CategoryList from './CategoryList';
 import Recommendations from './Recommendations';
 
@@ -43,11 +42,7 @@ const MainContent = () => {
           <DigitalContent />
         </section>
 
-        {/* Voice Commands Section */}
-        <section className="space-y-8">
-          <h2 className="text-2xl font-semibold text-gray-100 mb-4">Voice Commands</h2>
-          <VoiceCommands />
-        </section>
+        
       </div>
 
       {/* Chatbot Section */}

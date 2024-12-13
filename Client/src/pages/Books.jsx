@@ -1,5 +1,5 @@
 import React from 'react';
-import Catalog from '../components/Catalog';
+import CatalogPage from './CatalogPage';
 
 const Books = () => {
   return (
@@ -16,7 +16,7 @@ const Books = () => {
 
         {/* Catalog Section */}
         <section className="space-y-8">
-          <Catalog />
+          <CatalogPage />
         </section>
       </div>
     </main>
