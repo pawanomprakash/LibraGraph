@@ -1,5 +1,7 @@
+// src/components/Header.jsx
 import React from 'react';
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+import { Link } from 'react-router-dom'; // Importing Link for navigation
 
 const Header = () => {
   return (
@@ -20,6 +22,18 @@ const Header = () => {
 
         {/* Navigation Section */}
         <nav className="hidden md:flex gap-12 text-lg font-medium">
+          <Link
+            to="/books" // Link to the Books page
+            className="hover:text-blue-400 transition-all duration-300 transform hover:scale-105"
+          >
+            Books
+          </Link>
+          <Link
+            to="/digital-books" // Link to the Digital Books page
+            className="hover:text-blue-400 transition-all duration-300 transform hover:scale-105"
+          >
+            Digital Books
+          </Link>
           <a
             href="#contact"
             className="hover:text-blue-400 transition-all duration-300 transform hover:scale-105"
