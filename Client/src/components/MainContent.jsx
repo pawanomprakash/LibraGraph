@@ -46,7 +46,7 @@ const MainContent = () => {
       </div>
 
       {/* Chatbot Section */}
-      <div className="fixed bottom-8 right-8 w-72 bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+      <div className="fixed bottom-8 right-8 w-72  p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
         <Chatbot />
       </div>
     </main>
