@@ -17,7 +17,7 @@ const CategoryList = () => {
   return (
     <section className="mb-12">
       <h2 className="text-xl font-bold mb-4">Categories</h2>
-      <div className="flex space-x-4 overflow-x-scroll no-scrollbar">
+      <div className="flex space-x-4 overflow-x-auto scrollbar-hide">
         {categories.map((category) => (
           <div
             key={category.id}
