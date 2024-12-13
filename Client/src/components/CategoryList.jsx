@@ -6,16 +6,22 @@ const categories = [
   { id: 3, name: 'Technology', image: '/images/technology.jpg' },
   { id: 4, name: 'History', image: '/images/history.jpg' },
   { id: 5, name: 'Biography', image: '/images/biography.jpg' },
+
   { id: 6, name: 'Fantasy', image: '/images/fantasy.jpg' },
   { id: 7, name: 'Romance', image: '/images/romance.jpg' },
   { id: 8, name: 'Self-Help', image: '/images/self-help.jpg' },
   { id: 9, name: 'Mystery', image: '/images/mystery.jpg' },
   { id: 10, name: 'Children’s Books', image: '/images/children.jpg' },
+
 ];
 
 const CategoryList = () => {
   return (
+
+    <section>
+
     <section className="mb-12">
+
       <h2 className="text-xl font-bold mb-4">Categories</h2>
       <div className="flex space-x-4 overflow-x-scroll no-scrollbar">
         {categories.map((category) => (
