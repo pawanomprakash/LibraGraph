@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import '../Styles/VoiceCommands.css'; // Assuming you'll add styles in this file
 
 const VoiceCommands = () => {
   const [isListening, setIsListening] = useState(false);
   const [interimTranscript, setInterimTranscript] = useState('');
   const [finalTranscript, setFinalTranscript] = useState('');
   const [response, setResponse] = useState('');
+  const [isSpeaking, setIsSpeaking] = useState(false); // To track if the system is speaking
 
   const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-  recognition.continuous = true; 
-  recognition.interimResults = true; 
+  recognition.continuous = true;
+  recognition.interimResults = true;
   recognition.lang = 'en-US';
 
   const synth = window.speechSynthesis;
@@ -21,12 +23,11 @@ const VoiceCommands = () => {
   const stopListening = () => {
     setIsListening(false);
     recognition.stop();
-  
+
     setInterimTranscript('');
     setFinalTranscript('');
     setResponse('');
   };
-  
 
   const speakResponse = (text) => {
     if (!synth) {
@@ -39,17 +40,25 @@ const VoiceCommands = () => {
     }
 
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "en-US"; 
-    utterance.rate = 1; 
-    utterance.pitch = 1; 
+    utterance.lang = "en-US";
+    utterance.rate = 1;
+    utterance.pitch = 1;
 
     const voices = synth.getVoices();
     if (voices.length > 0) {
       utterance.voice = voices.find(voice => voice.lang === "en-US") || voices[0];
     }
 
-    utterance.onstart = () => console.log("Speech started...");
-    utterance.onend = () => console.log("Speech finished.");
+    utterance.onstart = () => {
+      setIsSpeaking(true); // Speech started
+      console.log("Speech started...");
+    };
+
+    utterance.onend = () => {
+      setIsSpeaking(false); // Speech ended
+      console.log("Speech finished.");
+    };
+
     utterance.onerror = (e) => console.error("Speech error:", e);
 
     synth.speak(utterance);
@@ -73,8 +82,8 @@ const VoiceCommands = () => {
         }
       }
 
-      setInterimTranscript(interimText); 
-      setFinalTranscript(finalText); 
+      setInterimTranscript(interimText);
+      setFinalTranscript(finalText);
 
       if (finalText.trim()) handleCommand(finalText.trim());
     };
@@ -106,31 +115,36 @@ const VoiceCommands = () => {
     }
 
     setResponse(responseText);
-    speakResponse(responseText); 
+    speakResponse(responseText);
   };
 
   return (
-    <div className="text-gray-100">
-      <h2 className="text-lg font-bold mb-4">Voice Commands</h2>
-      <button
-        onClick={isListening ? stopListening : startListening}
-        className={`py-2 px-4 rounded-lg ${
-          isListening ? 'bg-red-600' : 'bg-green-600'
-        } hover:opacity-80 transition duration-300`}
-      >
-        {isListening ? 'Stop Listening' : 'Start Listening'}
-      </button>
+    <div className="voice-commands-container">
+      <h2 className="title">Voice Commands</h2>
+      
+      {/* Centered button with sound wave animation */}
+      <div className="button-container">
+        <button
+          onClick={isListening ? stopListening : startListening}
+          className={`voice-button ${isListening ? 'listening' : ''}`}
+        >
+          {isListening ? 'Stop Listening' : 'Start Listening'}
+        </button>
+        {isListening && <div className="sound-wave"></div>}
+      </div>
+
+      {/* Transcripts and response */}
       <div className="mt-4">
         <textarea
-          className="w-full h-20 p-2 border border-gray-300 rounded mt-2 text-black"
+          className="transcript-box"
           value={interimTranscript}
           readOnly
           placeholder="Listening..."
         ></textarea>
-        <p className="mt-2">
+        <p className="transcript-text">
           <strong>Final Command:</strong> {finalTranscript || 'No command detected yet.'}
         </p>
-        <p>
+        <p className="response-text">
           <strong>Response:</strong> {response || 'No response yet.'}
         </p>
       </div>

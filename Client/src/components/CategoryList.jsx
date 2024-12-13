@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
+// Category data
 const categories = [
   { id: 1, name: 'Fiction', image: 'https://th.bing.com/th/id/OIP.fKu9KroDzzTVFQk3q5jC-gHaLX?w=188&h=289&c=7&r=0&o=5&dpr=1.4&pid=1.7' },
   { id: 2, name: 'Science', image: 'https://cdn2.penguin.com.au/covers/original/9781409350156.jpg' },
@@ -11,10 +12,51 @@ const categories = [
 ];
 
 const CategoryList = () => {
+  const containerRef = useRef(null);
+
+  // Function to scroll the container to the right
+  const scrollRight = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({
+        left: 200,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  // Function to scroll the container to the left
+  const scrollLeft = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({
+        left: -200,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
-    <section className="mb-12">
-      
-      <div className="flex space-x-6 overflow-x-auto py-4 px-2 scrollbar-hide">
+    <section className="mb-12 relative">
+      {/* Left Arrow Button */}
+      <button
+        onClick={scrollLeft}
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow-lg hover:bg-gray-600 transition-all"
+      >
+        &#8249;
+      </button>
+
+      {/* Right Arrow Button */}
+      <button
+        onClick={scrollRight}
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow-lg hover:bg-gray-600 transition-all"
+      >
+        &#8250;
+      </button>
+
+      {/* Scrollable Category Container */}
+      <div
+        ref={containerRef}
+        className="flex space-x-6 overflow-x-auto py-4 px-2 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-800 smooth-scroll"
+      >
         {categories.map((category) => (
           <div
             key={category.id}
