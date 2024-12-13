@@ -8,6 +8,7 @@ import Recommendations from './Recommendations';
 
 const MainContent = () => {
   return (
+
     <main className="py-12 px-6 bg-gray-900 text-gray-100 min-h-screen">
       <div className="container mx-auto space-y-16 w-full">
 
@@ -40,6 +41,22 @@ const MainContent = () => {
         {/* Digital Content Section */}
         <section className="space-y-8">
           <h2 className="text-2xl font-semibold text-gray-100 mb-4">Digital Content</h2>
+
+    <main className="py-12 px-6 bg-black text-gray-100 min-h-screen">
+      <div className="container mx-auto space-y-12 w-full">
+        {/* Categories Section */}
+        <CategoryList />
+
+        {/* Recommendations Section */}
+        <Recommendations />
+
+        {/* Other Sections */}
+        <section className="bg-gray-800 p-8 rounded-lg shadow-md">
+          <Catalog />
+        </section>
+        
+        <section className="bg-gray-800 p-8 rounded-lg shadow-md">
+
           <DigitalContent />
         </section>
 
