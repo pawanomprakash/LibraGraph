@@ -40,18 +40,8 @@ const Footer = () => {
             >
               Alexa
             </Link>
-            <a
-              href="#contact"
-              className="hover:text-blue-400 transition-all duration-300 transform hover:scale-105"
-            >
-              Contact Us
-            </a>
-            <a
-              href="#help"
-              className="hover:text-blue-400 transition-all duration-300 transform hover:scale-105"
-            >
-              Help
-            </a>
+           
+            
             <a
               href="#about"
               className="hover:text-blue-400 transition-all duration-300 transform hover:scale-105"
