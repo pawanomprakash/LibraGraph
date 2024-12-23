@@ -4,6 +4,7 @@ import LandingPage from './components/LandingPage';
 import Books from './pages/Books'; // Import the Books page
 import DigitalBooksPage from './pages/DigitalBooksPage'; // Import the new DigitalBooksPage component
 import VoiceBot from './pages/VoiceBot'; // Import the VoiceBot page
+import ChatBotPage from './pages/ChatBotPage';
 
 const NotFound = () => {
   return <div className="text-center p-8">404 - Page Not Found</div>;
@@ -47,6 +48,14 @@ function App() {
               Voice Bot
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/chat-bot"
+              className={({ isActive }) => (isActive ? 'text-blue-400' : 'hover:text-blue-400')}
+            >
+              ChatBot
+            </NavLink>
+          </li>
         </ul>
       </nav>
 
@@ -56,6 +65,7 @@ function App() {
         <Route path="/books" element={<Books />} />
         <Route path="/digital-books" element={<DigitalBooksPage />} />
         <Route path="/voice-bot" element={<VoiceBot />} /> {/* Add VoiceBot route */}
+        <Route path="/chat-bot" element={<ChatBotPage />} /> {/* Add ChatBot route */}
         <Route path="*" element={<NotFound />} /> {/* Catch-all route */}
       </Routes>
     </>

@@ -5,7 +5,7 @@ import VoiceCommand from '../components/VoiceCommands'; // Import the VoiceComma
 const VoiceBot = () => {
   return (
     <div className="container mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-4">Alexa - Voice Command</h1>
+      <h1 className="text-3xl font-bold mb-4"> Voice Command</h1>
       <VoiceCommand />
     </div>
   );

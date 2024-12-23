@@ -40,6 +40,12 @@ const Header = () => {
           >
             Voice Bot
           </Link>
+          <Link
+            to="/chat-bot" // Link to the VoiceBot page (Alexa section)
+            className="hover:text-blue-400 transition-all duration-300 transform hover:scale-105"
+          >
+            chat Bot
+          </Link>
          
           <a
             href="#about"
