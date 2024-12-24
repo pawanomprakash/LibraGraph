@@ -5,6 +5,7 @@ const connectToDB = require("./Config/connection.js");
 const bookRoutes = require('./Routes/routes');
 const bodyParser = require("body-parser");
 const authRoutes = require('./Routes/auth');
+const groqRoute = require('./Routes/groqRoute');
 
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(express.json());
 
 app.use('/api', bookRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/voicebot', groqRoute);
 
 connectToDB().then(() => {
   app.listen(PORT, () => {
