@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // Category data
 const categories = [
@@ -12,6 +13,7 @@ const categories = [
 ];
 
 const CategoryList = () => {
+  const navigate = useNavigate();
   const containerRef = useRef(null);
 
   // Function to scroll the container to the right
@@ -32,6 +34,11 @@ const CategoryList = () => {
         behavior: 'smooth',
       });
     }
+  };
+
+  // Navigate to category page
+  const navigateToCategory = (categoryName) => {
+    navigate(`/category/${categoryName.toLowerCase()}`);
   };
 
   return (
@@ -61,6 +68,7 @@ const CategoryList = () => {
           <div
             key={category.id}
             className="flex-shrink-0 w-48 h-64 bg-gray-700 rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 relative group"
+            onClick={() => navigateToCategory(category.name)}
           >
             <img
               src={category.image}

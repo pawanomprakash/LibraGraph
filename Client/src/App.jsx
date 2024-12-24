@@ -5,7 +5,7 @@ import Books from './pages/Books'; // Import the Books page
 import DigitalBooksPage from './pages/DigitalBooksPage'; // Import the new DigitalBooksPage component
 import VoiceBot from './pages/VoiceBot'; // Import the VoiceBot page
 import ChatBotPage from './pages/ChatBotPage';
-
+import CategoryBooks from './components/CategoryBooks'; // Import the CategoryBooks component
 const NotFound = () => {
   return <div className="text-center p-8">404 - Page Not Found</div>;
 };
@@ -66,6 +66,7 @@ function App() {
         <Route path="/digital-books" element={<DigitalBooksPage />} />
         <Route path="/voice-bot" element={<VoiceBot />} /> {/* Add VoiceBot route */}
         <Route path="/chat-bot" element={<ChatBotPage />} /> {/* Add ChatBot route */}
+        <Route path="/category/:categoryName" element={<CategoryBooks />} />
         <Route path="*" element={<NotFound />} /> {/* Catch-all route */}
       </Routes>
     </>
