@@ -12,6 +12,7 @@
   "dependencies": {
     "@clerk/clerk-react": "^5.19.2",
     "@langchain/groq": "^0.1.2",
+    "axios": "^1.7.9",
     "dotenv": "^16.4.7",
     "font-awesome": "^4.7.0",
     "libragraph": "file:",
