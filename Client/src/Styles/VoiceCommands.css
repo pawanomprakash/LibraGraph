@@ -45,13 +45,24 @@
     border: 1px solid #ccc;
     border-radius: 5px;
   }
-  
+
+  .input-container{
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+  }
+
+
   .button {
     padding: 8px 15px;
     background-color: black;
+    font-size: 24px;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    /* border-radius: 60%; */
+    height: 100%;
+
   }
   

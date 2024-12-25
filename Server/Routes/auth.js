@@ -6,38 +6,65 @@ const { jwtSecret, jwtExpiry } = require('../Config/auth');
 
 const router = express.Router();
 
-router.post('/register', async (req, res) => {
+router.get('/users', async (req, res) => {
   try {
-    const { email, password } = req.body;
-    const user = await User.create({ email, password });
-    res.status(201).json({ message: "User registered successfully" });
+    const users = await User.find(); // Fetch all users from the database
+    res.status(200).json(users); // Respond with the list of users
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.error("Error fetching users:", error.message);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
-router.post('/login', async (req, res) => {
+router.post('/saveUser', async (req, res) => {
   try {
-    const { email, password } = req.body;
-    const user = await User.findOne({ email });
-    if (!user || !(await bcrypt.compare(password, user.password))) {
-      return res.status(401).json({ error: "Invalid credentials" });
+    const { email, firstName, lastName, externalId } = req.body;
+
+    // Check if user already exists
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(200).json({ message: "User already exists in the database" });
     }
-    const token = jwt.sign({ id: user._id }, jwtSecret, { expiresIn: jwtExpiry });
-    res.json({ token });
+
+    // Create a new user in MongoDB
+    const newUser = await User.create({
+      email,
+      firstName,
+      lastName,
+      externalId, // Clerk's external ID
+    });
+
+    res.status(201).json({ message: "User saved successfully", user: newUser });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.error("Error saving user:", error.message);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
+// Protected Route
 router.get('/protected', (req, res) => {
-  const token = req.headers.authorization?.split(' ')[1];
-  if (!token) return res.status(401).json({ error: "Access denied" });
+  try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader) {
+      return res.status(401).json({ error: "Authorization header is missing" });
+    }
 
-  jwt.verify(token, jwtSecret, (err, user) => {
-    if (err) return res.status(403).json({ error: "Invalid token" });
-    res.json({ message: "Protected content", user });
-  });
+    const token = authHeader.split(' ')[1];
+    if (!token) {
+      return res.status(401).json({ error: "Token is missing" });
+    }
+
+    // Verify the token
+    jwt.verify(token, jwtSecret, (err, user) => {
+      if (err) {
+        return res.status(403).json({ error: "Invalid token" });
+      }
+      res.status(200).json({ message: "Protected content", user });
+    });
+  } catch (error) {
+    console.error("Protected route error:", error.message);
+    res.status(500).json({ error: "Internal server error" });
+  }
 });
 
 module.exports = router;

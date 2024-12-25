@@ -5,14 +5,16 @@ import Chatbot from './SmartChatbot';
 import CategoryList from './CategoryList';
 import Recommendations from './Recommendations';
 
-const MainContent = () => {
+const MainContent = ({username}) => {
+
   return (
     <main className="py-12 px-6 bg-gray-900 text-gray-100 min-h-screen">
       <div className="container mx-auto space-y-16 w-full">
 
         {/* Hero Section */}
         <header className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-white mb-4">Welcome to LibraGraphAI</h1>
+          <h1 className="text-4xl font-bold text-white mb-4">
+            Hi {username ? username : ""}, Welcome to LibraGraphAI</h1>
           <p className="text-lg text-gray-300">
             Explore books, discover recommendations, and experience cutting-edge features with our library system.
           </p>
