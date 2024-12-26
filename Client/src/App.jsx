@@ -7,6 +7,7 @@ import VoiceBot from './pages/VoiceBot'; // Import the VoiceBot page
 import ChatBotPage from './pages/ChatBotPage';
 import CategoryBooks from './components/CategoryBooks'; // Import the CategoryBooks component
 import AuthHandler from './components/AuthHandler';
+import AboutUs from './components/AboutUs';
 const NotFound = () => {
   return <div className="text-center p-8">404 - Page Not Found</div>;
 };
@@ -57,6 +58,14 @@ function App() {
               ChatBot
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/about-us"
+              className={({ isActive }) => (isActive ? 'text-blue-400' : 'hover:text-blue-400')}
+            >
+              About Us
+            </NavLink>
+          </li>
         </ul>
       </nav>
 
@@ -68,6 +77,7 @@ function App() {
         <Route path="/digital-books" element={<DigitalBooksPage />} />
         <Route path="/voice-bot" element={<VoiceBot />} /> {/* Add VoiceBot route */}
         <Route path="/chat-bot" element={<ChatBotPage />} /> {/* Add ChatBot route */}
+        <Route path="/about-us" element={<AboutUs />} /> {/* Add ChatBot route */}
         <Route path="/category/:categoryName" element={<CategoryBooks />} />
         <Route path="*" element={<NotFound />} /> {/* Catch-all route */}
       </Routes>

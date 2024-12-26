@@ -19,45 +19,53 @@ const CategoryBooks = () => {
         setLoading(false);
       }
     };
-  
+
     fetchBooks();
   }, [categoryName]);
 
   if (loading) {
-    return <div className="flex items-center justify-center h-screen bg-black text-white text-2xl">Loading...</div>;
+    return (
+      <div className="flex items-center justify-center h-screen bg-gray-900 text-white text-2xl">
+        Loading...
+      </div>
+    );
   }
-  
+
   if (books.length === 0) {
     return (
-      <div className="flex items-center justify-center h-screen bg-black text-white text-2xl">
+      <div className="flex items-center justify-center h-screen bg-gray-900 text-white text-2xl">
         No books available in this category.
       </div>
     );
   }
-  
 
-  // Determine if the category is Fiction to apply specific styling
   const isFiction = categoryName.toLowerCase() === 'fiction';
 
   return (
-    <section className="p-4 bg-black text-white">
-      <h2 className="text-2xl font-bold mb-4 text-center">{categoryName.charAt(0).toUpperCase() + categoryName.slice(1)} Books</h2>
-      
+    <section className="p-6 bg-gray-900 text-white min-h-screen">
+      <h2 className="text-3xl font-bold mb-8 text-center capitalize">
+        {categoryName} Books
+      </h2>
+
       <div
-        className={`grid ${isFiction ? 'grid-cols-3 gap-8 justify-center' : 'grid-cols-3 gap-6'} mx-4`}
+        className={`grid ${
+          isFiction ? 'grid-cols-3' : 'grid-cols-2'
+        } gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3`}
       >
         {books.map((book) => (
           <div
             key={book.ISBN}
-            className="bg-gray-800 p-6 rounded-lg h-100 m-4 hover:shadow-lg transition-shadow"
+            className="bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
           >
             <img
               src={book.image_link}
               alt={book.name}
-              className="w-full h-64 object-cover rounded-t-lg mb-4"
+              className="w-full h-64 object-cover"
             />
-            <h3 className="text-lg font-semibold">{book.name}</h3>
-            <p className="text-gray-400">{book.author}</p>
+            <div className="p-4">
+              <h3 className="text-lg font-semibold mb-2">{book.name}</h3>
+              <p className="text-gray-400">{book.author}</p>
+            </div>
           </div>
         ))}
       </div>

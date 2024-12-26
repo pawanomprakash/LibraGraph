@@ -1,98 +1,89 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Importing Link for navigation
-
-// Ensure you have FontAwesome icons included in your project. You can include it in your `index.html` or install it via npm/yarn.
-import { FaFacebookF, FaTwitter, FaLinkedinIn } from 'react-icons/fa'; // Importing React FontAwesome icons
+import { Link } from 'react-router-dom';
+import { FaFacebookF, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white py-16">
+    <footer className="bg-gradient-to-br from-gray-800 via-gray-900 to-black text-gray-300 py-16">
       <div className="container mx-auto px-6 md:px-12">
 
         {/* Footer Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
 
-          {/* Left Section - Branding */}
-          <div className="footer-left flex flex-col items-center md:items-start">
+          {/* Branding Section */}
+          <div className="flex flex-col items-center md:items-start">
             <h3 className="text-4xl font-extrabold text-white">LibraGraphAI</h3>
-            <p className="text-md mt-3 text-gray-200 max-w-xs md:max-w-sm text-center md:text-left">
+            <p className="text-sm mt-3 text-gray-400 max-w-xs md:max-w-sm text-center md:text-left">
               Empowering libraries with knowledge graphs and AI. Revolutionizing library management and knowledge sharing.
             </p>
           </div>
 
           {/* Navigation Section */}
-          <nav className="md:flex gap-12 text-lg font-medium text-center md:text-left">
+          <nav className="flex flex-col space-y-4 md:space-y-2 text-center md:text-left">
             <Link
-              to="/books" // Link to the Books page
-              className="hover:text-blue-400 transition-all duration-300 transform hover:scale-105"
+              to="/books"
+              className="text-gray-400 hover:text-gray-100 transition-all duration-300"
             >
               Books
             </Link>
             <Link
-              to="/digital-books" // Link to the Digital Books page
-              className="hover:text-blue-400 transition-all duration-300 transform hover:scale-105"
+              to="/digital-books"
+              className="text-gray-400 hover:text-gray-100 transition-all duration-300"
             >
               Digital Books
             </Link>
             <Link
-              to="/voice-bot" // Link to the VoiceBot page (Alexa section)
-              className="hover:text-blue-400 transition-all duration-300 transform hover:scale-105"
+              to="/voice-bot"
+              className="text-gray-400 hover:text-gray-100 transition-all duration-300"
             >
               Alexa
             </Link>
-           
-            
             <a
-              href="#about"
-              className="hover:text-blue-400 transition-all duration-300 transform hover:scale-105"
+              href="/about-us"
+              className="text-gray-400 hover:text-gray-100 transition-all duration-300"
             >
-              About
+              About Us
             </a>
           </nav>
 
-        </div>
-
-        {/* Footer Bottom Section - Follow Us */}
-        <div className="mt-12 text-center md:text-left"> {/* Increased margin for spacing */}
-          <div className="footer-right flex flex-col items-center md:items-start">
-            <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
-            <div className="flex space-x-6 text-3xl">
-              {/* Facebook */}
+          {/* Follow Us Section */}
+          <div className="flex flex-col items-center md:items-start">
+            <h4 className="text-lg font-semibold text-gray-100 mb-4">Follow Us</h4>
+            <div className="flex space-x-6 text-2xl">
               <a
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-gray-300 transition duration-300"
+                className="text-gray-400 hover:text-blue-500 transition duration-300"
               >
                 <FaFacebookF />
               </a>
-              {/* Twitter */}
               <a
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-gray-300 transition duration-300"
+                className="text-gray-400 hover:text-blue-400 transition duration-300"
               >
                 <FaTwitter />
               </a>
-              {/* LinkedIn */}
               <a
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-gray-300 transition duration-300"
+                className="text-gray-400 hover:text-blue-600 transition duration-300"
               >
                 <FaLinkedinIn />
               </a>
             </div>
           </div>
-
-          {/* Footer Copyright */}
-          <div className="mt-8 text-center">
-            <p className="text-sm text-gray-300">© {new Date().getFullYear()} LibraGraphAI. All Rights Reserved.</p>
-          </div>
         </div>
 
+        {/* Footer Bottom Section */}
+        <div className="mt-12 text-center border-t border-gray-700 pt-8">
+          <p className="text-sm text-gray-500">
+            © {new Date().getFullYear()} LibraGraphAI. All Rights Reserved.
+          </p>
+        </div>
       </div>
     </footer>
   );

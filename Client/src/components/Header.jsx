@@ -48,10 +48,10 @@ const Header = () => {
           </Link>
          
           <a
-            href="#about"
+            href="/about-us"
             className="hover:text-blue-400 transition-all duration-300 transform hover:scale-105"
           >
-            About
+            About Us
           </a>
         </nav>
 
