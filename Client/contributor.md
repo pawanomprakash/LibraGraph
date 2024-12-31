@@ -10,8 +10,8 @@ To contribute to this project, you need to set up a `.env` file in the root dire
 2. Copy and paste the following keys into the `.env` file:
 
 ```env
-VITE_CLERK_PUBLISHABLE_KEY=pk_test_c3dlZXBpbmctYmVldGxlLTM0LmNsZXJrLmFjY291bnRzLmRldiQ
-VITE_GOOGLE_API_KEY=AIzaSyAvPYDPbh8T5Ml-0-dys39frOyO-lMaq-0
+VITE_CLERK_PUBLISHABLE_KEY=
+VITE_GOOGLE_API_KEY=
 
 VITE_LANGCHAIN_TRACING_V2=
 VITE_LANGCHAIN_ENDPOINT=

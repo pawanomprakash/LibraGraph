@@ -1,125 +1,131 @@
+# *LibraGraphAI*
 
-# **LibraGraphAI**
-
-**LibraGraphAI** is a next-generation library management system that harnesses the power of **knowledge graphs** and **generative AI** to deliver intelligent, personalized, and efficient user experiences. By combining advanced data relationships, dynamic search capabilities, and interactive AI, LibraGraphAI revolutionizes how libraries manage content and engage with users.
-
----
-
-## **Features**
-
-- 🚀 **Knowledge Graph Integration**  
-   Leverage **Neo4j** to map and manage complex relationships between books, authors, genres, and user preferences. Unlock insights and recommendations through efficient graph queries.
-
-- 🤖 **Generative AI-Powered Recommendations**  
-   Utilize **LangChain** and generative AI to provide tailored book recommendations and dynamic, natural-language responses to user queries.
-
-- 💡 **Interactive Librabot**  
-   A conversational AI assistant capable of answering library-related queries, finding books, and assisting users with voice or text interactions.
-
-- 📚 **Category-Based Organization**  
-   Seamlessly browse books organized by genre, author, and popularity.
-
-- 🔍 **Advanced Search Functionality**  
-   Search for books instantly with intelligent search algorithms integrated into the system.
-
-- 🌐 **User-Friendly Interface**  
-   A sleek, responsive **React.js** frontend ensures an engaging and intuitive user experience across all devices.
-
-- 🛠️ **API-First Architecture**  
-   Powered by **FastAPI**, our backend delivers efficient, scalable, and developer-friendly API endpoints for managing library data.
+*LibraGraphAI* is an innovative library management system that leverages the power of AI and modern web technologies to provide a seamless and intelligent user experience. The system integrates advanced data management, interactive AI features, and a user-friendly interface to enhance library operations and user engagement.
 
 ---
 
-## **Tech Stack**
+## *Features*
 
-- **Backend**: FastAPI (Python)  
-- **Frontend**: React.js, Axios  
-- **Database**: Neo4j (Graph Database)  
-- **AI and Machine Learning**: LangChain, Generative AI Models  
-- **Version Control**: Git  
-- **Voice Integration**: Speech Recognition APIs  
+- *AI-Powered Recommendations*  
+  Utilize *LangChain* and *GROQ* for personalized book recommendations and dynamic interactions.
+
+- *Interactive Voice and Chat Bots*  
+  Engage with users through voice commands and chat interfaces powered by *AssemblyAI* and *ElevenLabs*.
+
+- *Modern Frontend with React and Vite*  
+  A responsive and dynamic user interface built with *React.js* and *Vite* for fast and efficient performance.
+
+- *Comprehensive Book Catalog*  
+  Explore a wide range of books categorized by genre, including Fiction, Science, Biography, and more.
+
+- *Secure Authentication*  
+  User authentication and management using *Clerk* for a secure and personalized experience.
+
+- *Environment Configuration*  
+  Easily configurable environment settings for both client and server using .env files.
 
 ---
 
-## **Getting Started**
+## *Tech Stack*
 
-### **Prerequisites**
-Before running the project, ensure the following dependencies are installed:
+- *Frontend*: React.js, Vite, Tailwind CSS
+- *Backend*: Express.js, Mongoose
+- *Database*: MongoDB
+- *AI and Machine Learning*: LangChain, GROQ
+- *Voice and Chat Integration*: AssemblyAI, ElevenLabs
+- *Authentication*: Clerk
 
-- **Python** >= 3.6  
-- **Node.js** >= 14.0  
-- **Neo4j** (Community or Enterprise Edition)  
+---
 
-### **Setup Instructions**
+## *Getting Started*
 
-1. **Clone the Repository**:
-   ```bash
+### *Prerequisites*
+Ensure you have the following installed:
+
+- *Node.js* >= 14.0
+- *MongoDB* 
+
+### *Setup Instructions*
+
+1. *Clone the Repository*:
+   bash
    git clone https://github.com/BroadrangeAI/LibraGraphAI.git
    cd LibraGraphAI
-   ```
+   
 
-2. **Backend Setup**:
-   - Navigate to the `backend` directory:
-     ```bash
-     cd backend
-     ```
+2. *Server Setup*:
+   - Navigate to the Server directory:
+     bash
+     cd Server
+     
    - Install dependencies:
-     ```bash
-     pip install -r requirements.txt
-     ```
-   - Run the FastAPI server:
-     ```bash
-     uvicorn main:app --reload
-     ```
-
-3. **Frontend Setup**:
-   - Navigate to the `frontend` directory:
-     ```bash
-     cd ../frontend
-     ```
-   - Install dependencies:
-     ```bash
+     bash
      npm install
-     ```
+     
+   - Set up environment variables:
+     - Create a .env file in the Server directory with the following keys:
+       env
+       MONGO_DB_URI=your_mongodb_uri
+       PORT=3000
+       ELEVENLABS_API_KEY=your_elevenlabs_api_key
+       ASSEMBLYAI_API_KEY=your_assemblyai_api_key
+       VITE_GROQ_API_KEY=your_groq_api_key
+       
+   - Start the server:
+     bash
+     npm run dev
+     
+
+3. *Client Setup*:
+   - Navigate to the Client directory:
+     bash
+     cd ../Client
+     
+   - Install dependencies:
+     bash
+     npm install
+     
+   - Set up environment variables:
+     - Create a .env file in the Client directory with the following keys:
+       env
+       VITE_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+       VITE_GOOGLE_API_KEY=your_google_api_key
+       
    - Start the development server:
-     ```bash
-     npm start
-     ```
+     bash
+     npm run dev
+     
 
-4. **Neo4j Setup**:
-   - Install and start the Neo4j database.
-   - Update the connection credentials in the backend configuration.
-
-5. **Access the App**:
+4. *Access the App*:
    Open your browser and go to:  
-   `http://localhost:3000`
+   http://localhost:3000
 
 ---
 
-## **Project Architecture**
+## *Project Structure*
 
-```
+
 LibraGraphAI/
 │
-├── backend/            # FastAPI Backend
-│   ├── main.py         # API entry point
-│   ├── models/         # Data models
-│   ├── routes/         # API routes
-│   ├── utils/          # Utility functions
-│   └── requirements.txt
+├── Server/             # Express.js Backend
+│   ├── Config/         # Configuration files
+│   ├── Model/          # Mongoose models
+│   ├── Routes/         # API routes
+│   ├── controllers/    # Controller logic
+│   └── Server.js       # Server entry point
 │
-├── frontend/           # React.js Frontend
+├── Client/             # React.js Frontend
 │   ├── public/         
 │   ├── src/            # Component-based architecture
 │   ├── package.json    # Frontend dependencies
 │   └── README.md
 │
 └── README.md           # Project Documentation
-```
+
 
 ---
 
-## **Contributors**
+## *Contributors*
 
 We’re a collaborative team working to shape the future of AI-powered libraries:  
 
@@ -131,14 +137,13 @@ We’re a collaborative team working to shape the future of AI-powered libraries
 
 ---
 
-## **License**
+## *License*
 
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the *MIT License*. See the [LICENSE](LICENSE) file for details.
 
 ---
 
-## **Contact**
+## *Contact*
 
 For inquiries, collaboration, or support, reach out to us at:  
-📧 **contact@broadrangeai.com**
-
+📧 *contact@broadrangeai.com*
