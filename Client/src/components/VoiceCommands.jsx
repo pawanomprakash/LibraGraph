@@ -73,6 +73,7 @@ const VoiceCommands = () => {
       const { data } = await axios.post('http://localhost:3000/api/voicebot/chat', { text: message });
       setMessages((prev) => [...prev, { role: 'assistant', content: data.text }]);
 
+
       if (data.audio) {
         if (audioRef.current) {
           audioRef.current.pause(); // Stop the previous audio
@@ -93,32 +94,42 @@ const VoiceCommands = () => {
   };
 
   return (
-    <div className="chatbot">
-      <div className="chat-container">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-gray-100 p-4">
+      {/* Chat Window */}
+      <div className="flex flex-col p-4 max-w-2xl w-full bg-gray-800/80 rounded-lg shadow-lg mb-6 overflow-y-auto h-[60vh]">
         {messages.map((msg, index) => (
-          <div key={index} className={`message ${msg.role === 'user' ? 'user' : 'assistant'}`}>
+          <div
+            key={index}
+            className={`my-2 p-3 rounded-lg max-w-lg ${msg.role === 'user' ? 'bg-gradient-to-r from-indigo-500 to-blue-600 text-white self-end' : 'bg-gray-700 text-gray-200 self-start'}`}
+          >
             {msg.content}
           </div>
         ))}
-        {isLoading && <div className="loading">Loading...</div>}
+        {isLoading && <div className="text-gray-400 text-center mt-2 text-sm">Loading...</div>}
       </div>
-      <div className="input-container">
+
+      {/* Input and Actions */}
+      <div className="flex items-center p-4 max-w-2xl w-full bg-gray-800/80 rounded-lg shadow-lg space-x-3">
         <input
           type="text"
           value={input}
-          className="input"
+          className="flex-grow px-3 py-2 border border-gray-700 rounded-lg bg-gray-800 text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
           onChange={(e) => setInput(e.target.value)}
           placeholder="Ask me anything..."
-          disabled={!isSignedIn} // Disable input if not signed in
+          disabled={!isSignedIn}
         />
-        <button className="button" onClick={() => sendMessage(input)} disabled={!isSignedIn}>
+        <button
+          className="px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg hover:from-indigo-600 hover:to-purple-600 disabled:opacity-50 text-sm"
+          onClick={() => sendMessage(input)}
+          disabled={!isSignedIn}
+        >
           Send
         </button>
         <button
-          className={`button ${isListening ? 'recording' : ''}`}
+          className={`px-4 py-2 rounded-lg ${isListening ? 'bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700' : 'bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700'} text-white disabled:opacity-50 text-sm`}
           onMouseDown={startListening}
           onMouseUp={stopListening}
-          disabled={!isSignedIn} // Disable button if not signed in
+          disabled={!isSignedIn}
         >
           {isListening ? 'Recording' : 'Hold to Record'}
         </button>

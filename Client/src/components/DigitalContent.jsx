@@ -62,9 +62,7 @@ const DigitalContent = () => {
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 text-gray-100 py-12 space-y-8">
-      <h2 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-pink-500">
-        Digital Books Collection
-      </h2>
+    
 
       {/* Content Section */}
       <div className="w-full space-y-12 px-6">

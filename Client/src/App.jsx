@@ -16,58 +16,7 @@ function App() {
   return (
     <>
       {/* Add a simple navigation bar to navigate between pages */}
-      <nav>
-        <ul className="flex gap-4 p-4 bg-gray-800 text-white">
-          <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) => (isActive ? 'text-blue-400' : 'hover:text-blue-400')}
-            >
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/books"
-              className={({ isActive }) => (isActive ? 'text-blue-400' : 'hover:text-blue-400')}
-            >
-              Books
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/digital-books"
-              className={({ isActive }) => (isActive ? 'text-blue-400' : 'hover:text-blue-400')}
-            >
-              Digital Books
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/voice-bot"
-              className={({ isActive }) => (isActive ? 'text-blue-400' : 'hover:text-blue-400')}
-            >
-              Voice Bot
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/chat-bot"
-              className={({ isActive }) => (isActive ? 'text-blue-400' : 'hover:text-blue-400')}
-            >
-              ChatBot
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/about-us"
-              className={({ isActive }) => (isActive ? 'text-blue-400' : 'hover:text-blue-400')}
-            >
-              About Us
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
+      
 
       {/* Define routes for the application */}
       <Routes>
