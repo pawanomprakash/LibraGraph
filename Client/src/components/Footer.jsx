@@ -45,7 +45,7 @@ const Footer = () => {
               Voice Bot
             </Link>
             <a
-              href="/about-us"
+              href="/aboutus"
               className="text-gray-400 hover:text-gray-100 transition-all duration-300"
             >
               About Us

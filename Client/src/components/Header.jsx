@@ -48,7 +48,7 @@ const Header = () => {
           </Link>
          
           <a
-            href="/about-us"
+            href="/aboutus"
             className="hover:text-blue-400 transition-all duration-300 transform hover:scale-105"
           >
             About Us
