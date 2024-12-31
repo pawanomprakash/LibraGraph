@@ -10,7 +10,7 @@ const Recommendations = () => {
 
       for (const category of visitedCategories) {
         try {
-          const response = await fetch(`http://localhost:3000/api/${category}`);
+          const response = await fetch(`https://libragraph-backend-7yjq.onrender.com/api/${category}`);
           const data = await response.json();
           recommendedBooks = [...recommendedBooks, ...data];
         } catch (error) {

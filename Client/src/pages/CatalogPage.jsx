@@ -16,7 +16,7 @@ const CatalogPage = () => {
   // Function to fetch books from the API
   const fetchBooks = (page) => {
     setLoading(true);
-    fetch(`http://localhost:3000/api/books?page=${page}&limit=${booksPerPage}`)
+    fetch(`https://libragraph-backend-7yjq.onrender.com/api/books?page=${page}&limit=${booksPerPage}`)
       .then(response => response.json())
       .then(data => {
         setBooks((prevBooks) => [...prevBooks, ...data]); // Append new books to the existing list
