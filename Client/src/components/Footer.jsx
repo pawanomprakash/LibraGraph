@@ -33,10 +33,16 @@ const Footer = () => {
               Digital Books
             </Link>
             <Link
+              to="/chat-bot"
+              className="text-gray-400 hover:text-gray-100 transition-all duration-300"
+            >
+              Chat Bot
+            </Link>
+            <Link
               to="/voice-bot"
               className="text-gray-400 hover:text-gray-100 transition-all duration-300"
             >
-              Alexa
+              Voice Bot
             </Link>
             <a
               href="/about-us"
