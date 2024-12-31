@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const AboutUs = () => {
   return (
     <div className="bg-gray-900 text-white py-16 px-8 md:px-24">
@@ -24,7 +25,7 @@ const AboutUs = () => {
           <h2 className="text-4xl font-semibold mb-8 text-gray-400">Our Mentor: RK Sir</h2>
           <div className="flex flex-col md:flex-row items-center md:items-start gap-12">
             <img
-              src="https://media.licdn.com/dms/image/v2/D5603AQEtgQ-znX5GcA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1730376242183?e=1740614400&v=beta&t=0dDFop2dp7cCBJPMyXrVw-BP23Y1S2vZ2pihjnGbjIc"
+              src="\images\Rk_image.jpg"
               alt="RK Sir"
               className="w-48 h-48 rounded-full shadow-xl"
             />
@@ -46,7 +47,7 @@ const AboutUs = () => {
             {/* Team Member: Vidhvath */}
             <div className="text-center bg-gray-800 p-6 rounded-lg shadow-xl hover:scale-105 transition-all duration-300">
               <img
-                src="https://media.licdn.com/dms/image/v2/D5603AQEBZ_jnJ0gYnA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1721583429964?e=1740614400&v=beta&t=J2dLu-agjDo_F8jxETCdpkwFF-LCj_WhZZ88p5ilEfk"
+                src="images\Vidhvath_image.jpg"
                 alt="Vidhvath"
                 className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-500"
               />
@@ -59,7 +60,7 @@ const AboutUs = () => {
             {/* Team Member: Jatin */}
             <div className="text-center bg-gray-800 p-6 rounded-lg shadow-xl hover:scale-105 transition-all duration-300">
               <img
-                src="https://media.licdn.com/dms/image/v2/D5603AQHbKiUdLk0PHQ/profile-displayphoto-shrink_400_400/B56ZOcuGBiHYAk-/0/1733501150537?e=1740614400&v=beta&t=KHSzJMQ-oZAfv5y5iExeahyCRKBXxBIEtfD0HN5mVWg"
+                src="\images\Jatin_image.jpg"
                 alt="Jatin"
                 className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-500"
               />
@@ -72,7 +73,7 @@ const AboutUs = () => {
             {/* Team Member: Prabhas Varma */}
             <div className="text-center bg-gray-800 p-6 rounded-lg shadow-xl hover:scale-105 transition-all duration-300">
               <img
-                src="https://media.licdn.com/dms/image/v2/D4E03AQG4RGaHc8ojjw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1701773948139?e=1740614400&v=beta&t=KX1BKpbYBJYTlQtvWnLJ6tMJag2WXPRgF9QqIcaziiA"
+                src="\images\Prabhas_image.jpg"
                 alt="Prabhas Varma"
                 className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-500"
               />
@@ -85,7 +86,7 @@ const AboutUs = () => {
             {/* Team Member: Pawan */}
             <div className="text-center bg-gray-800 p-6 rounded-lg shadow-xl hover:scale-105 transition-all duration-300">
               <img
-                src="https://i.pinimg.com/originals/77/a6/65/77a6657040df52fb7c998a6cf6ed10d4.jpg"
+                src="\images\pawan_image.jpg"
                 alt="Pawan"
                 className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-500"
               />
@@ -98,7 +99,7 @@ const AboutUs = () => {
             {/* Team Member: Raniya */}
             <div className="text-center bg-gray-800 p-6 rounded-lg shadow-xl hover:scale-105 transition-all duration-300">
               <img
-                src="https://th.bing.com/th/id/R.54814a6f7afded1aabf758a4ffdfadde?rik=2%2b4byFKKxZzXcA&riu=http%3a%2f%2fpm1.narvii.com%2f5903%2f3239c3f8dd727d6c3c2564f318bb8d040af529e8_00.jpg&ehk=VKkj3u532uO%2bV8o4NrnfIp6UVwPqUFA4f3WsrAEUA7w%3d&risl=&pid=ImgRaw&r=0"
+                src="\images\raniya_image.jpg"
                 alt="Raniya"
                 className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-500"
               />
