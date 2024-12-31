@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useUser } from "@clerk/clerk-react"; // Import useUser to get the current user
 import '../Styles/VoiceCommands.css';
@@ -9,6 +9,7 @@ const VoiceCommands = () => {
   const [isListening, setIsListening] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { isSignedIn, user } = useUser(); // Check if the user is signed in and get user details
+  const audioRef = useRef(null); // Reference to track the current audio instance
 
   useEffect(() => {
     if (isSignedIn) {
@@ -73,9 +74,15 @@ const VoiceCommands = () => {
       setMessages((prev) => [...prev, { role: 'assistant', content: data.text }]);
 
       if (data.audio) {
+        if (audioRef.current) {
+          audioRef.current.pause(); // Stop the previous audio
+          audioRef.current.currentTime = 0; // Reset playback position
+        }
         const audio = new Audio(data.audio);
+        audioRef.current = audio; // Set the new audio instance
         audio.play();
       } else {
+        synth.cancel(); // Stop any ongoing text-to-speech
         speakText(data.text);
       }
     } catch (error) {
