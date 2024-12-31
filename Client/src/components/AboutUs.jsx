@@ -1,5 +1,10 @@
 import React from "react";
-
+import PawanImg from '../../public/images/pawan_image.jpg'
+import PrabhasImg from '../../public/images/Prabhas_image.jpg'
+import Raniya from '../../public/images/raniya_image.jpg'
+import VidhvathImg from '../../public/images/Vidhvath_image.jpg'
+import JatinImg from '../../public/images/Jatin_image.jpg'
+import Rk_image from '../../public/images/Rk_image.jpg'
 
 const AboutUs = () => {
   return (
@@ -25,7 +30,7 @@ const AboutUs = () => {
           <h2 className="text-4xl font-semibold mb-8 text-gray-400">Our Mentor: RK Sir</h2>
           <div className="flex flex-col md:flex-row items-center md:items-start gap-12">
             <img
-              src="\images\Rk_image.jpg"
+              src={Rk_image}
               alt="RK Sir"
               className="w-48 h-48 rounded-full shadow-xl"
             />
@@ -47,7 +52,7 @@ const AboutUs = () => {
             {/* Team Member: Vidhvath */}
             <div className="text-center bg-gray-800 p-6 rounded-lg shadow-xl hover:scale-105 transition-all duration-300">
               <img
-                src="images\Vidhvath_image.jpg"
+                src={VidhvathImg}
                 alt="Vidhvath"
                 className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-500"
               />
@@ -60,7 +65,7 @@ const AboutUs = () => {
             {/* Team Member: Jatin */}
             <div className="text-center bg-gray-800 p-6 rounded-lg shadow-xl hover:scale-105 transition-all duration-300">
               <img
-                src="\images\Jatin_image.jpg"
+                src={JatinImg}
                 alt="Jatin"
                 className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-500"
               />
@@ -73,7 +78,7 @@ const AboutUs = () => {
             {/* Team Member: Prabhas Varma */}
             <div className="text-center bg-gray-800 p-6 rounded-lg shadow-xl hover:scale-105 transition-all duration-300">
               <img
-                src="\images\Prabhas_image.jpg"
+                src={PrabhasImg}
                 alt="Prabhas Varma"
                 className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-500"
               />
@@ -86,7 +91,7 @@ const AboutUs = () => {
             {/* Team Member: Pawan */}
             <div className="text-center bg-gray-800 p-6 rounded-lg shadow-xl hover:scale-105 transition-all duration-300">
               <img
-                src="\images\pawan_image.jpg"
+                src={PawanImg}
                 alt="Pawan"
                 className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-500"
               />
@@ -99,7 +104,7 @@ const AboutUs = () => {
             {/* Team Member: Raniya */}
             <div className="text-center bg-gray-800 p-6 rounded-lg shadow-xl hover:scale-105 transition-all duration-300">
               <img
-                src="\images\raniya_image.jpg"
+                src={Raniya}
                 alt="Raniya"
                 className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-500"
               />
