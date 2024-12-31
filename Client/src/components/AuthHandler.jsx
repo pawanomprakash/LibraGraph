@@ -15,7 +15,7 @@ const AuthHandler = () => {
         // Send user data to the backend
         const saveUser = async () => {
           try {
-            await axios.post('http://localhost:3000/api/auth/saveUser', {
+            await axios.post('https://libragraph-backend-7yjq.onrender.com/api/auth/saveUser', {
               email: user?.emailAddresses[0]?.emailAddress,
               firstName: user?.firstName,
               lastName: user?.lastName,

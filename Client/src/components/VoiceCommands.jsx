@@ -70,7 +70,7 @@ const VoiceCommands = () => {
     setIsLoading(true);
 
     try {
-      const { data } = await axios.post('http://localhost:3000/api/voicebot/chat', { text: message });
+      const { data } = await axios.post('https://libragraph-backend-7yjq.onrender.com/api/voicebot/chat', { text: message });
       setMessages((prev) => [...prev, { role: 'assistant', content: data.text }]);
 
 

@@ -9,7 +9,7 @@ const CategoryBooks = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/${categoryName}`);
+        const response = await fetch(`https://libragraph-backend-7yjq.onrender.com/api/${categoryName}`);
         const data = await response.json();
         console.log(data); // Log the data to see if books are returned
         setBooks(data);
