@@ -38,6 +38,12 @@ const CategoryList = () => {
 
   // Navigate to category page
   const navigateToCategory = (categoryName) => {
+    // Store visited category in local storage
+    const visitedCategories = JSON.parse(localStorage.getItem('visitedCategories')) || [];
+    if (!visitedCategories.includes(categoryName)) {
+      visitedCategories.push(categoryName);
+      localStorage.setItem('visitedCategories', JSON.stringify(visitedCategories));
+    }
     navigate(`/category/${categoryName.toLowerCase()}`);
   };
 
