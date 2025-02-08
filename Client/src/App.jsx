@@ -26,7 +26,7 @@ function App() {
         <Route path="/digital-books" element={<DigitalBooksPage />} />
         <Route path="/voice-bot" element={<VoiceBot />} /> {/* Add VoiceBot route */}
         <Route path="/chat-bot" element={<ChatBotPage />} /> {/* Add ChatBot route */}
-        <Route path="/about-us" element={<AboutUs />} /> {/* Add ChatBot route */}
+        <Route path="/aboutus" element={<AboutUs />} /> {/* Add ChatBot route */}
         <Route path="/category/:categoryName" element={<CategoryBooks />} />
         <Route path="*" element={<NotFound />} /> {/* Catch-all route */}
       </Routes>
