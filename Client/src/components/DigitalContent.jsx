@@ -8,8 +8,8 @@ const DigitalContent = () => {
   const [isLoadingEBooks, setIsLoadingEBooks] = useState(false);
   const [isLoadingAudiobooks, setIsLoadingAudiobooks] = useState(false);
 
-  const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY || 'AIzaSyAvPYDPbh8T5Ml-0-dys39frOyO-lMaq-0';
   const MAX_RESULTS = 12;
+  const API_KEY = import.meta.env ? import.meta.env.VITE_GOOGLE_API_KEY : process.env.VITE_GOOGLE_API_KEY
 
   const fetchDigitalContent = async (type, startIndex) => {
     try {
