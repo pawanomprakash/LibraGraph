@@ -14,6 +14,7 @@ const allowedOrigins = [
   'https://libragraph-1.onrender.com',
   'https://libragraph.onrender.com', 
   'http://localhost:3000',
+  'https://libragraph-backend-7yjq.onrender.com'
   // // Add more origins as needed
 ];
 
