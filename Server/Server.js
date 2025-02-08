@@ -7,14 +7,26 @@ const bodyParser = require("body-parser");
 const authRoutes = require('./Routes/auth');
 const groqRoute = require('./Routes/groqRoute');
 
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const allowedOrigins = [
+  'https://libragraph-1.onrender.com',
+  'https://libragraph.onrender.com', 
+  'http://localhost:3000',
+  // // Add more origins as needed
+];
+
 const corsOptions = {
-  origin: 'https://libragraph.onrender.com',  // Replace with your frontend's URL
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Optional: Add allowed methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Optional: Add headers if necessary
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 };
 
 app.use(cors(corsOptions));
