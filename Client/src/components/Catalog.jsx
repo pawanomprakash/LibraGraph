@@ -16,11 +16,22 @@ const Catalog = () => {
   // Function to fetch books from the API
   const fetchBooks = (page) => {
     setLoading(true);
-    fetch(`https://libragraph-backend-7yjq.onrender.com/api/books?page=${page}&limit=${booksPerPage}`)
-      .then((response) => response.json())
+    fetch(`https://libragraph-backend-7yjq.onrender.com/api/books?page=${page}&limit=${booksPerPage}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      mode: "cors", // Ensure CORS is enabled
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
       .then((data) => {
-        setBooks((prevBooks) => [...prevBooks, ...data]); // Append new books to the existing list
-        setFilteredBooks((prevBooks) => [...prevBooks, ...data]); // Same for filtered list
+        setBooks((prevBooks) => [...prevBooks, ...data]); 
+        setFilteredBooks((prevBooks) => [...prevBooks, ...data]); 
         setLoading(false);
       })
       .catch((err) => {
