@@ -25,7 +25,7 @@ const AboutUs = () => {
           <h2 className="text-4xl font-semibold mb-8 text-gray-400">Our Mentor: RK Sir</h2>
           <div className="flex flex-col md:flex-row items-center md:items-start gap-12">
             <img
-              src="\images\Rk_image.jpg"
+              src="https://media.licdn.com/dms/image/v2/D5603AQEtgQ-znX5GcA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1730376242183?e=1744243200&v=beta&t=DmDC-fGhxVbNMbkkkKljGt-9K__p6EC_qU4TL3kuPW4"
               alt="RK Sir"
               className="w-48 h-48 rounded-full shadow-xl"
             />
@@ -47,7 +47,7 @@ const AboutUs = () => {
             {/* Team Member: Vidhvath */}
             <div className="text-center bg-gray-800 p-6 rounded-lg shadow-xl hover:scale-105 transition-all duration-300">
               <img
-                src="images\Vidhvath_image.jpg"
+                src="https://media.licdn.com/dms/image/v2/D5603AQEBZ_jnJ0gYnA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1721583429964?e=1744243200&v=beta&t=x-LbtKaLtKBxNClfTIs6akhDp_MZYkcO-xoCn7N88i4"
                 alt="Vidhvath"
                 className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-500"
               />
@@ -60,7 +60,7 @@ const AboutUs = () => {
             {/* Team Member: Jatin */}
             <div className="text-center bg-gray-800 p-6 rounded-lg shadow-xl hover:scale-105 transition-all duration-300">
               <img
-                src="\images\Jatin_image.jpg"
+                src="https://media.licdn.com/dms/image/v2/D5603AQHbKiUdLk0PHQ/profile-displayphoto-shrink_100_100/B56ZOcuGBiHYAY-/0/1733501150523?e=1744243200&v=beta&t=qSxMsUjkqw6rKtoC6Rk8HukIz7hUeSJ8pcWCMLS12gw"
                 alt="Jatin"
                 className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-500"
               />
@@ -73,7 +73,7 @@ const AboutUs = () => {
             {/* Team Member: Prabhas Varma */}
             <div className="text-center bg-gray-800 p-6 rounded-lg shadow-xl hover:scale-105 transition-all duration-300">
               <img
-                src="\images\Prabhas_image.jpg"
+                src="https://media.licdn.com/dms/image/v2/D4E03AQG4RGaHc8ojjw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1701773948139?e=1744243200&v=beta&t=SXZ4cEWgA94XINdq3RTnJ9ksCpLELf06Jtg0bV4apHI"
                 alt="Prabhas Varma"
                 className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-500"
               />
@@ -86,7 +86,7 @@ const AboutUs = () => {
             {/* Team Member: Pawan */}
             <div className="text-center bg-gray-800 p-6 rounded-lg shadow-xl hover:scale-105 transition-all duration-300">
               <img
-                src="\images\pawan_image.jpg"
+                src={`https://drive.google.com/file/d/1oHXlL7ZkmIBVw7TLelvphsTMkBdVGNHn/view?usp=sharing`}
                 alt="Pawan"
                 className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-500"
               />
@@ -99,7 +99,7 @@ const AboutUs = () => {
             {/* Team Member: Raniya */}
             <div className="text-center bg-gray-800 p-6 rounded-lg shadow-xl hover:scale-105 transition-all duration-300">
               <img
-                src="\images\raniya_image.jpg"
+                src="https://media.licdn.com/dms/image/v2/D5603AQGFEuES9cQbRQ/profile-displayphoto-shrink_400_400/B56ZTl_Z_dHQAg-/0/1739025392545?e=1744243200&v=beta&t=58DolifHDKHxoVtmvwaG2cssQzPe4hgU72qaww6dahg"
                 alt="Raniya"
                 className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-500"
               />
